@@ -1,6 +1,6 @@
 import csv
 
-# Functions that Reads Data (Without Header)
+# Functions that reads data (without header)
 def load_data(filename):
     with open(filename, newline='') as csvfile:
         reader = csv.reader(csvfile)
