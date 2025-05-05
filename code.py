@@ -32,12 +32,6 @@ def clean_data(rows):
             continue
     return cleaned
 
-# Loads the data
-mercedes = load_data("usa_mercedes_benz_prices.csv")
-
-# Cleans the data
-mercedes = clean_data(mercedes)
-
 # Function that compares cars with high ratings and low Mileage with other cars
 def analysis(data):
     high_rating_low_mileage = []
@@ -57,5 +51,11 @@ def analysis(data):
     print(f"Average Price of Other Cars: ${round(avg_other, 2)}\n")
     print(f"High-Rated, Low-Mileage Cars are on average ${round(avg_high_rating_low_mileage, 2) - round(avg_other, 2)} more expensive than other cars")
 
-# Running the function
+# Loads the data
+mercedes = load_data("usa_mercedes_benz_prices.csv")
+
+# Cleans the data
+mercedes = clean_data(mercedes)
+
+# Running analsis(data) function
 analysis(mercedes)
