@@ -1,22 +1,25 @@
 import csv
 
-# Function 1: Reads Data (Without Header)
+# Functions that Reads Data (Without Header)
 def load_data(filename):
     with open(filename, newline='') as csvfile:
         reader = csv.reader(csvfile)
         header = next(reader)
         return list(reader)
 
-# Functions 2: Data Clean-Up + Filtering Variables
+# Function that removes the $ from the price
 def clean_price(price_str):
     return float(price_str.replace('$', '').replace(',', ''))
 
+# Function that converts rating from string to integer
 def clean_rating(rating_str):
     return float(rating_str)
 
+# Function that removes mi. from the mileage
 def clean_mileage(mileage_str):
     return int(mileage_str.replace(' mi.', '').replace(',', ''))
 
+# Function that filters necessary variables
 def clean_data(rows):
     cleaned = []
     for row in rows:
@@ -29,11 +32,13 @@ def clean_data(rows):
             continue
     return cleaned
 
-# Function 3: Loading + Cleaning Data
+# Loads the data
 mercedes = load_data("usa_mercedes_benz_prices.csv")
+
+# Cleans the data
 mercedes = clean_data(mercedes)
 
-# Function 4: Compares Cars with High Ratings and Low Mileage with Normal Cars
+# Function that compares cars with high ratings and low Mileage with other cars
 def analysis(data):
     high_rating_low_mileage = []
     other_cars = []
@@ -52,5 +57,5 @@ def analysis(data):
     print(f"Average Price of Other Cars: ${round(avg_other, 2)}\n")
     print(f"High-Rated, Low-Mileage Cars are on average ${round(avg_high_rating_low_mileage, 2) - round(avg_other, 2)} more expensive than other cars")
 
-# Function 5: Running Function 4
+# Running the function
 analysis(mercedes)
